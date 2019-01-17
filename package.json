@@ -1,0 +1,42 @@
+{
+  "name": "securebox",
+  "version": "1.0.0",
+  "description": "Benchmarking, logging, tracing and anomaly detection dashboard",
+  "main": "./build/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint src",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir build",
+    "prepublish": "npm run clean && npm run lint && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "build",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcvats/securebox.git"
+  },
+  "author": "Archit <archit5793@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arcvats/securebox/issues"
+  },
+  "homepage": "https://github.com/arcvats/securebox#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.5.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.4",
+    "rimraf": "^2.6.3"
+  }
+}
