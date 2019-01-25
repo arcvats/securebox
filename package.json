@@ -40,6 +40,8 @@
     "rimraf": "^2.6.3"
   },
   "dependencies": {
-    "appmetrics": "4.0.1"
+    "appmetrics": "4.0.1",
+    "axios": "0.18.0",
+    "underscore": "1.9.1"
   }
 }
