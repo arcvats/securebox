@@ -10,9 +10,9 @@ class Requests {
     });
   }
 
-  async getConfig() {
+  async getConfig(config) {
     try {
-      const response = await this.axios.get("/api/config");
+      const response = await this.axios.post("/api/config", { config });
       return response;
     } catch (err) {
       throw err;

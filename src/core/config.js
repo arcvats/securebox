@@ -1,5 +1,8 @@
+import _ from "underscore";
+import Requests from "../utils/requests";
+
 class Config {
-  static loadConfig(config) {
+  static loadConfig(config, token, connection) {
     const defaultConfig = {
       main: {
         cpu: true,
@@ -18,6 +21,11 @@ class Config {
         request: false
       }
     };
+    const request = new Requests(token, connection);
+    if (_.isEmpty(config)) {
+      return request.getConfig(defaultConfig);
+    }
+    return request.getConfig(config);
   }
 }
 

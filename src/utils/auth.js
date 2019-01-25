@@ -1,8 +1,13 @@
 import Config from "../core/config";
-import Database from "../core/database";
 
 class Auth {
-  static connectAndVerify({ config, token, connection }) {}
+  static connectAndVerify({ config, token, connection }) {
+    const updatedConfig = Config.loadConfig(config, token, connection);
+    if (updatedConfig.status) {
+      return updatedConfig.config;
+    }
+    throw new Error(updatedConfig.message);
+  }
 }
 
 export default Auth;
