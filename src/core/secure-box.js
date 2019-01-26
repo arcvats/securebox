@@ -4,17 +4,16 @@ import Auth from "../utils/auth";
 /**
  * @class SecureBox
  * @classdesc Facade interface to provide configuration and monitoring function
- * @example const securebox = new SecureBox({configObject}, token, connectionString)
+ * @example const securebox = new SecureBox(token, connectionString)
  */
 class SecureBox {
-  constructor(config, token, connection) {
+  constructor(token, connection) {
     try {
-      if (_.isUndefined(config) || _.isUndefined(token) || _.isUndefined(connection)) {
+      if (_.isUndefined(token) || _.isUndefined(connection)) {
         throw new Error("Missing Arguments");
-      } else if (!_.isString(token) || !_.isString(connection) || !_.isObject(config)) {
+      } else if (!_.isString(token) || !_.isString(connection)) {
         throw new Error("Invalid Arguments");
       } else {
-        this.config = config;
         this.token = token;
         this.connection = connection;
       }
@@ -25,7 +24,7 @@ class SecureBox {
 
   dashboardMonitoring() {
     try {
-      const updatedConfig = Auth.connectAndVerify(this);
+      const config = Auth.connectAndVerify(this);
     } catch (err) {
       throw err;
     }
