@@ -9,7 +9,8 @@
       "production": {
         "presets": ["env", "minify"],
         "plugins": [
-          "add-module-exports"
+          "add-module-exports",
+          "transform-runtime"
         ]
       }
     }

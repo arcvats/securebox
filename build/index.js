@@ -1,1 +1,1 @@
-"use strict";
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var _secureBox=require("./core/secure-box"),_secureBox2=_interopRequireDefault(_secureBox);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}exports.default=_secureBox2.default,module.exports=exports.default;

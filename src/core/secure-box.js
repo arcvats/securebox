@@ -1,5 +1,10 @@
+/**
+ * @file Main SecureBox Class
+ * @author Archit <archit5793@gmail.com>
+ */
 import _ from "underscore";
 import Auth from "../utils/auth";
+import Appmetrics from "../utils/appmetrics";
 
 /**
  * @class SecureBox
@@ -7,7 +12,7 @@ import Auth from "../utils/auth";
  * @example const securebox = new SecureBox(token, connectionString)
  */
 class SecureBox {
-  constructor(token, connection) {
+  constructor(token, connection, options = {}) {
     try {
       if (_.isUndefined(token) || _.isUndefined(connection)) {
         throw new Error("Missing Arguments");
@@ -16,21 +21,27 @@ class SecureBox {
       } else {
         this.token = token;
         this.connection = connection;
+        this.options = options;
       }
     } catch (err) {
       throw err;
     }
   }
 
-  dashboardMonitoring() {
+  dashboardMonitoring(cli = false) {
     try {
       const config = Auth.connectAndVerify(this);
+      const monitors = new Appmetrics(config, cli);
+      monitors.init();
     } catch (err) {
       throw err;
     }
   }
 
-  static consoleMonitoring(config) {}
+  static consoleMonitoring(config, cli = true) {
+    const monitors = new Appmetrics(config, cli);
+    monitors.init();
+  }
 }
 
 export default SecureBox;
