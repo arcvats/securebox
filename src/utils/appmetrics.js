@@ -1,5 +1,6 @@
 import appmetrics from "appmetrics";
 import _ from "underscore";
+import { chalkifyAppmetrics } from "./chalkify";
 
 class Appmetrics {
   constructor(config, cli) {
@@ -17,7 +18,7 @@ class Appmetrics {
     this.appmetrics.on("initialized", () => {
       const env = this.appmetrics.getEnvironment();
       if (this.config.main.environment && this.cli) {
-        console.log(env);
+        chalkifyAppmetrics.env(env);
       } else {
         console.log("Send to mqtt");
       }
@@ -34,7 +35,7 @@ class Appmetrics {
     _.each(params, (param) => {
       this.appmetrics.on(param, (data) => {
         if (this.cli) {
-          console.log(param, data);
+          chalkifyAppmetrics[param](data);
         }
       });
     });
