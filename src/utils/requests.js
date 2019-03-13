@@ -9,15 +9,6 @@ class Requests {
       headers: { "X-Access-Token": token }
     });
   }
-
-  async getConfig(config) {
-    try {
-      const response = await this.axios.post("/api/config", { config });
-      return response;
-    } catch (err) {
-      throw err;
-    }
-  }
 }
 
 export default Requests;

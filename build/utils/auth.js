@@ -1,1 +1,35 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var _classCallCheck2=require("babel-runtime/helpers/classCallCheck"),_classCallCheck3=_interopRequireDefault(_classCallCheck2),_createClass2=require("babel-runtime/helpers/createClass"),_createClass3=_interopRequireDefault(_createClass2),_config=require("../core/config"),_config2=_interopRequireDefault(_config);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var Auth=function(){function a(){(0,_classCallCheck3.default)(this,a)}return(0,_createClass3.default)(a,null,[{key:"connectAndVerify",value:function f(a){var b=a.config,c=a.token,d=a.connection,e=_config2.default.loadConfig(b,c,d);if(e.status)return e.config;throw new Error(e.message)}}]),a}();exports.default=Auth,module.exports=exports.default;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import Config from "../core/config";
+
+var Auth = function () {
+  function Auth() {
+    (0, _classCallCheck3.default)(this, Auth);
+  }
+
+  (0, _createClass3.default)(Auth, null, [{
+    key: "connectAndVerify",
+    value: function connectAndVerify() {
+      return true;
+      // TODO: check for config
+    }
+  }]);
+  return Auth;
+}();
+
+exports.default = Auth;
+module.exports = exports.default;

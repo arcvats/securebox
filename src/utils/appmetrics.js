@@ -1,12 +1,12 @@
 import appmetrics from "appmetrics";
 import _ from "underscore";
-import { chalkifyAppmetrics } from "./chalkify";
+import mqttHelper from "./mqtt";
 
 class Appmetrics {
-  constructor(config, cli) {
+  constructor(config, connectorConfig = {}) {
     this.appmetrics = appmetrics.monitor();
     this.config = config;
-    this.cli = cli;
+    this.connectorConfig = connectorConfig;
   }
 
   init() {
@@ -16,11 +16,9 @@ class Appmetrics {
 
   env() {
     this.appmetrics.on("initialized", () => {
-      const env = this.appmetrics.getEnvironment();
-      if (this.config.main.environment && this.cli) {
-        chalkifyAppmetrics.env(env);
-      } else {
-        console.log("Send to mqtt");
+      // const env = this.appmetrics.getEnvironment();
+      if (this.config.main.environment) {
+        // TODO: send env
       }
     });
   }
@@ -32,17 +30,14 @@ class Appmetrics {
         (val, key) => !val || key === "environment"
       )
     );
-    _.each(params, (param) => {
-      this.appmetrics.on(param, (data) => {
-        if (this.cli) {
-          chalkifyAppmetrics[param](data);
-        }
-      });
-    });
+    if (this.connectorConfig.type === "mqtt") {
+      mqttHelper(this.appmetrics, params, this.connectorConfig.host, this.connectorConfig.port);
+    }
   }
 
   close() {
     this.appmetrics.stop();
+    this.connector.end();
   }
 }
 

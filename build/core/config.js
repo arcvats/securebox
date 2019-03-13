@@ -1,1 +1,24 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var _classCallCheck2=require("babel-runtime/helpers/classCallCheck"),_classCallCheck3=_interopRequireDefault(_classCallCheck2),_createClass2=require("babel-runtime/helpers/createClass"),_createClass3=_interopRequireDefault(_createClass2),_underscore=require("underscore"),_underscore2=_interopRequireDefault(_underscore),_requests=require("../utils/requests"),_requests2=_interopRequireDefault(_requests);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var Config=function(){function a(){(0,_classCallCheck3.default)(this,a)}return(0,_createClass3.default)(a,null,[{key:"loadConfig",value:function e(a,b,c){var d=new _requests2.default(b,c);return _underscore2.default.isEmpty(a)?d.getConfig({main:{cpu:!0,eventloop:!0,gc:!1,environment:!0,loop:!1,memory:!0,profiling:!1},probe:{http:!0,"http-outbound":!1},requests:{request:!1}}):d.getConfig(a)}}]),a}();exports.default=Config,module.exports=exports.default;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  main: {
+    cpu: true,
+    eventloop: true,
+    gc: true,
+    environment: true,
+    loop: false,
+    memory: true,
+    profiling: false
+  },
+  probe: {
+    http: true,
+    "http-outbound": false
+  },
+  requests: {
+    request: false
+  }
+};
+module.exports = exports.default;
