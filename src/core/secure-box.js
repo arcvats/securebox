@@ -6,6 +6,9 @@ import _ from "underscore";
 // import Auth from "../utils/auth";
 import Appmetrics from "../utils/appmetrics";
 import config from "./config";
+import tracer from "../utils/tracer";
+import Requests from "../utils/requests";
+import auditor from "../utils/auditor";
 
 const DEFAULT_OPTIONS = {
   auth: true,
@@ -27,6 +30,7 @@ class SecureBox {
         this.token = token;
         this.connection = connection;
         this.options = _.extend(DEFAULT_OPTIONS, options);
+        // this.requests = new Requests(token, connection);
       }
     } catch (err) {
       throw err;
@@ -40,9 +44,36 @@ class SecureBox {
       // }
       const monitors = new Appmetrics(config, this.options.connectorConfig);
       monitors.init();
+      auditor();
     } catch (err) {
       throw err;
     }
+  }
+
+  static stackTrace() {
+    new Requests("abcd", "http://localhost:9000")
+      .sendStackTrace(tracer.stackTrace())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static startTimer() {
+    tracer.startTimer();
+  }
+
+  static endTimer() {
+    new Requests("abcd", "http://localhost:9000")
+      .sendTimer(tracer.endTimer())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 

@@ -27,7 +27,6 @@ exports.default = function (appmetrics, params) {
     console.log("connected on mqtt");
     _underscore2.default.each(params, function (param) {
       appmetrics.on(param, function (data) {
-        console.log(param, data);
         mqttClient.publish(param, (0, _stringify2.default)(data));
       });
     });

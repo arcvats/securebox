@@ -9,6 +9,18 @@ class Requests {
       headers: { "X-Access-Token": token }
     });
   }
+
+  sendStackTrace(data) {
+    return this.axios.post("/stacktrace", data);
+  }
+
+  sendTimer(data) {
+    return this.axios.post("/timer", data);
+  }
+
+  sendAudit(data) {
+    return this.axios.post("/audit", data);
+  }
 }
 
 export default Requests;

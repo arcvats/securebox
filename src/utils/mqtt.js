@@ -7,7 +7,6 @@ export default (appmetrics, params, host = "localhost", port = "1883") => {
     console.log("connected on mqtt");
     _.each(params, (param) => {
       appmetrics.on(param, (data) => {
-        console.log(param, data);
         mqttClient.publish(param, JSON.stringify(data));
       });
     });
