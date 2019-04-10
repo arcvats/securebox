@@ -14,11 +14,7 @@ const DEFAULT_OPTIONS = {
   auth: true,
   connectorConfig: {}
 };
-/**
- * @class SecureBox
- * @classdesc Facade interface to provide configuration and monitoring function
- * @example const securebox = new SecureBox(token, connectionString)
- */
+
 class SecureBox {
   constructor(token, connection, options = {}) {
     try {
