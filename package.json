@@ -49,6 +49,7 @@
     "moment": "^2.24.0",
     "mqtt": "2.18.8",
     "performance-now": "^2.1.0",
+    "read-package-json": "2.0.13",
     "stack-utils": "^1.0.2",
     "underscore": "1.9.1"
   }

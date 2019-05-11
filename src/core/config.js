@@ -1,4 +1,6 @@
-export default {
+import readPackageJson from "read-package-json";
+
+const DEFAULT_PARAMS = {
   main: {
     cpu: true,
     eventloop: true,
@@ -16,3 +18,9 @@ export default {
     request: false
   }
 };
+
+readPackageJson();
+
+function readFromFile() {}
+
+export default function loadConfig() {}
